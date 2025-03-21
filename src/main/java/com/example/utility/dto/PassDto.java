@@ -11,4 +11,8 @@ public record PassDto(@NotNull(message = "A senha é obrigatório")
         @Pattern(regexp = ".*[0-9].*", message = "A senha deve conter pelo menos um dígito numérico.")
         @Pattern(regexp = ".*\\W.*", message = "A senha deve conter pelo menos um caractere especial.")
                       String password) {
+
+        public PassDto(String password) {
+                this.password = password;
+        }
 }
