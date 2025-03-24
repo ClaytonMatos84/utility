@@ -19,13 +19,13 @@ public class PasswordService {
                 .toString();
 
         int addInt = passRandom.nextInt(1, 8);
-        StringBuilder newPass = new StringBuilder();
         for (int i = 0; i < addInt; i++) {
             int randomInt = passRandom.nextInt(10, 100);
-            int maxAddLength = passRandom.nextInt(3, targetStringLength);
-            newPass.append(pass, 1, maxAddLength).append(randomInt);
+            int maxAddLength = passRandom.nextInt(3, pass.length());
+            String newPass = pass.substring(0, maxAddLength) + randomInt;
+            pass = newPass + pass.substring(maxAddLength, pass.length() - 1);
         }
 
-        return new PassDto(newPass.substring(0, targetStringLength));
+        return new PassDto(pass);
     }
 }
